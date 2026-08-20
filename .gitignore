@@ -1,0 +1,19 @@
+# R
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+*.Rproj
+
+# Secrets / credentials — never commit
+**/*_key.json
+**/*_keys.json
+**/*.bak.json
+**/*credentials*.json
+**/*secret*
+**/.Renviron
+**/.env
+data/
+
+# OS / editor
+.DS_Store
