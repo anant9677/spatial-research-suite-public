@@ -1,8 +1,9 @@
-# Spatial Research Suite — Reef & Land Remote-Sensing Pipeline
+# Spatial Research Suite — Geospatial & Remote-Sensing Analysis Pipeline
 
-An open **R / Shiny + Google Earth Engine** analysis pipeline for satellite monitoring of
-coral reefs under tourism pressure, and general land-cover / change analysis. Built for
-reproducible, publishable remote-sensing research.
+An open, general-purpose **R / Shiny + Google Earth Engine** pipeline for reproducible,
+publishable remote-sensing research — land-cover & change analysis, spectral-index libraries,
+trend/correlation statistics, and a marine/coral module. Designed as an extensible suite, not a
+single-study tool.
 
 > **Case study:** Maya Bay (Ko Phi Phi Leh, Thailand) — using the 2018–2022 tourism
 > closure as a natural experiment to separate tourism impact from climate impact on the reef.
@@ -61,6 +62,7 @@ decision classes with precautionary triggers), using a DPSIR + BACI / interrupte
 | `mod_extractor.R` | Boundary / shapefile handling |
 | `mod_insights.R`, `export_engine.R`, `processing_router.R`, `multivariate_engine.R` | Insights, exports, routing, multivariate helpers |
 | `global.R` | GEE session init + all shared/pure analysis functions |
+| `app.R` | Entry point — builds the UI, wires the modules, runs the Export Manager |
 
 ---
 
@@ -77,6 +79,18 @@ Requires **R (≥ 4.2)**, the R packages in the app headers (`shiny`, `rgee`, `s
 # then rgee/earthengine-api uses your own Google Earth Engine project.
 ```
 
+Then launch from the repository root (the folder holding `app.R`, `global.R`, and `R/`):
+
+```r
+shiny::runApp()          # or open app.R in RStudio and click "Run App"
+```
+
+Shiny auto-loads every module in `R/`; `global.R` initialises the Earth Engine session.
+This is an **open build** — no accounts, no login, no payments: every module and every
+export is available immediately from a boundary + date range. (The internal build's separate
+*Statistical Analysis* tab is not part of this release; trend, correlation and confidence-interval
+statistics are still produced inside the GEE pipeline and its reports.)
+
 No API keys, service-account keys, or credentials of any kind are committed to this repository.
 
 ---
@@ -90,10 +104,52 @@ with in-situ / hyperspectral data, and see the interpretation notes attached to 
 
 ---
 
+## Reproducing the Maya Bay case study
+
+The paper's natural experiment uses the 2018–2022 tourism closure of **Maya Bay
+(Ko Phi Phi Leh, Thailand)** to separate tourism pressure from climate pressure on the reef.
+To reproduce it end-to-end:
+
+**1. Study area.** In the *Shapefile Extractor* (or by drawing a ROI on the map), use the bay and
+its fringing reef. Approximate bounding box (WGS84 / EPSG:4326 — adjust to your exact ROI):
+
+| | Longitude (E) | Latitude (N) |
+|---|---|---|
+| min | 98.758 | 7.672 |
+| max | 98.772 | 7.686 |
+
+**2. Three time windows** (drive the same pipeline for each, then compare):
+
+| Phase | Date range | Sensor to use |
+|---|---|---|
+| Pre-closure baseline | `2016-01-01 → 2018-05-31` | Landsat long-record coral (Sentinel-2 is sparse pre-2019) |
+| Closure | `2018-06-01 → 2021-12-31` | Sentinel-2 (2019+) + Landsat |
+| Post-reopening | `2022-01-01 → 2025-12-31` | Sentinel-2 |
+
+**3. Pipeline order** (GEE Cloud Analytics → sequential pipeline): Land Mask → Allen Coral Atlas
+coral mask → **Coral Health** (blue-green bottom index) → **Coral-vs-Algae** variability screen →
+**Marine Heat Stress** (SST anomaly + Degree Heating Weeks) → **Turbidity** (Nechad) → **Trend**
+(OLS + 95% CI, Mann-Kendall/Theil-Sen) → **Cross-indicator correlation**. Each step hands its
+region/mask to the next; export the HTML report at the end.
+
+**4. Reading the result — the key caveat.** The bottom index *rises* after reopening (peaking in the
+2024 heatwave year). This is **not** proof of coral recovery: the blue-green index cannot tell live
+coral from macroalgae, and the **Coral-vs-Algae** variability map flags that benthic cover as
+fluctuating (algae-likely), not stable (coral-likely). Read the rise as "more dark benthic cover,"
+consistent with macroalgae — and confirm with in-situ / hyperspectral data before any ecological claim.
+
+The provenance table in every report records the exact CRS, date range, bounding box, parameters,
+and software versions used, so a reviewer can re-run the identical analysis.
+
+---
+
 ## How to cite
 
-> Pathak, A. K. (2026). *Spatial Research Suite — Reef & Land Remote-Sensing Pipeline.*
-> https://github.com/anant9677/spatial-research-suite
+If you use this software, please cite it (see `CITATION.cff`, which GitHub renders as a
+"Cite this repository" button):
+
+> Pathak, A. K. (2026). *Spatial Research Suite — Geospatial & Remote-Sensing Analysis Pipeline* (Version 1.0.0) [Computer software].
+> https://github.com/anant9677/spatial-research-suite-public
 
 Please also cite the underlying datasets and methods listed in each report's
 **Data sources & references** section (Sentinel-2/Landsat, NOAA OISST, Allen Coral Atlas,
