@@ -1,5 +1,5 @@
 # =========================================================================
-# APP.R - MAIN ENTRY POINT  (Spatial Research Suite - open research build)
+# APP.R - MAIN ENTRY POINT  (GISFORUS Spatial Research Suite - open research build)
 # =========================================================================
 # Public, open-source build: no accounts, no login, no payments. Every module
 # and every export is available immediately from a boundary + date range.
@@ -9,7 +9,7 @@
 # =========================================================================
 source("global.R")
 shared_head <- tags$head(
-  tags$title("Spatial Research Suite"),
+  tags$title("GISFORUS Spatial Research Suite"),
   tags$link(rel = "preconnect", href = "https://fonts.googleapis.com"),
   tags$link(rel = "preconnect", href = "https://fonts.gstatic.com", crossorigin = ""),
   tags$link(href = "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap", rel = "stylesheet"),
@@ -996,8 +996,8 @@ main_navbar_ui <- navbarPage(
              tags$div(style = "position:absolute; top:50%; left:50%; width:10px; height:10px; border-radius:50%; background:#45936f; transform:translate(-50%,-50%);")
     ),
     tags$div(
-      tags$div("SPATIAL SUITE", style = "font-family:'IBM Plex Mono',monospace; font-weight:700; font-size:19px; line-height:1.15; letter-spacing:0.02em; color:#f7f6f2;"),
-      tags$div("Geospatial & Remote-Sensing Suite", style = "font-family:'IBM Plex Mono',monospace; font-weight:400; font-size:10px; line-height:1.2; color:#b9c2c8; letter-spacing:0.03em;")
+      tags$div("GISFORUS", style = "font-family:'IBM Plex Mono',monospace; font-weight:700; font-size:19px; line-height:1.15; letter-spacing:0.02em; color:#f7f6f2;"),
+      tags$div("Spatial Research Suite", style = "font-family:'IBM Plex Mono',monospace; font-weight:400; font-size:10px; line-height:1.2; color:#b9c2c8; letter-spacing:0.03em;")
     )
   ), id = "main_nav",
   theme = bs_theme(
@@ -1053,7 +1053,7 @@ main_navbar_ui <- navbarPage(
       tags$span("|", style = "color:#3d4f5c;"),
       tags$a("Source (GitHub)", href = "https://github.com/anant9677/spatial-research-suite-public", target = "_blank", style = "color:#b9c2c8; margin:0 12px; text-decoration:none;")
     ),
-    tags$div(style = "margin-top:8px; color:#7c8b96;", "Spatial Research Suite \u00b7 MIT Licensed \u00b7 Research & educational screening tools, not field-validated.")
+    tags$div(style = "margin-top:8px; color:#7c8b96;", HTML("&copy; 2026 GISFORUS \u2014 Spatial Research Suite \u00b7 MIT-licensed code \u00b7 GISFORUS\u2122 is a trademark of Anant Kumar Pathak \u00b7 Research &amp; educational screening tools, not field-validated."))
   )
 )
 ui <- tagList(shared_head, main_navbar_ui)
@@ -1329,11 +1329,11 @@ server <- function(input, output, session) {
   
   observeEvent(input$about_link, {
     showModal(modalDialog(
-      title = "About Spatial Research Suite", size = "m", easyClose = TRUE, footer = modalButton("Close"),
+      title = "About GISFORUS Spatial Research Suite", size = "m", easyClose = TRUE, footer = modalButton("Close"),
       div(style = "font-size:13px; line-height:1.6; color:#3d4f5c;",
-          p("Spatial Research Suite is an open R / Shiny + Google Earth Engine pipeline for reproducible, publishable remote-sensing research \u2014 land-cover & change analysis, spectral-index libraries, trend/correlation statistics, and a marine/coral module."),
+          p(HTML("The <b>GISFORUS Spatial Research Suite</b> is an open R / Shiny + Google Earth Engine pipeline for reproducible, publishable remote-sensing research \u2014 land-cover &amp; change analysis, spectral-index libraries, trend/correlation statistics, and a marine/coral module.")),
           p("Features include: administrative boundary extraction, Random Forest / CART / SVM land-cover classification with per-pixel confidence mapping, statistically-validated multi-year trend detection (Mann-Kendall), batch zonal statistics, correlation analysis, and publication-ready cartography."),
-          p(tags$b("Built by:"), " Anant Kumar Pathak"),
+          p(tags$b("A GISFORUS\u2122 project by:"), " Anant Kumar Pathak"),
           p(tags$b("Contact:"), " ", tags$a(href = "mailto:anant4infinity@gmail.com", "anant4infinity@gmail.com"))
       )
     ))

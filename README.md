@@ -1,12 +1,12 @@
-# Spatial Research Suite — Geospatial & Remote-Sensing Analysis Pipeline
+# GISFORUS Spatial Research Suite — Geospatial & Remote-Sensing Analysis Pipeline
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22075124.svg)](https://doi.org/10.5281/zenodo.22075124)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-An open, general-purpose **R / Shiny + Google Earth Engine** pipeline for reproducible,
-publishable remote-sensing research — land-cover & change analysis, spectral-index libraries,
-trend/correlation statistics, and a marine/coral module. Designed as an extensible suite, not a
-single-study tool.
+A **GISFORUS™** project. An open, general-purpose **R / Shiny + Google Earth Engine** pipeline for
+reproducible, publishable remote-sensing research — land-cover & change analysis, spectral-index
+libraries, trend/correlation statistics, and a marine/coral module. Designed as an extensible
+suite, not a single-study tool.
 
 > **Case study:** Maya Bay (Ko Phi Phi Leh, Thailand) — using the 2018–2022 tourism
 > closure as a natural experiment to separate tourism impact from climate impact on the reef.
@@ -151,8 +151,8 @@ and software versions used, so a reviewer can re-run the identical analysis.
 If you use this software, please cite it (see `CITATION.cff`, which GitHub renders as a
 "Cite this repository" button):
 
-> Pathak, A. K. (2026). *Spatial Research Suite — Geospatial & Remote-Sensing Analysis Pipeline* (Version 1.0.0) [Computer software].
-> Zenodo. https://doi.org/10.5281/zenodo.22075124
+> Pathak, A. K. (2026). *GISFORUS Spatial Research Suite — Geospatial & Remote-Sensing Analysis Pipeline* (Version 1.0.0) [Computer software].
+> GISFORUS. Zenodo. https://doi.org/10.5281/zenodo.22075124
 
 **DOI:** [10.5281/zenodo.22075124](https://doi.org/10.5281/zenodo.22075124) — this is the *concept DOI* and always resolves to the latest release. Zenodo also mints a version-specific DOI for each release.
 
@@ -160,10 +160,21 @@ Please also cite the underlying datasets and methods listed in each report's
 **Data sources & references** section (Sentinel-2/Landsat, NOAA OISST, Allen Coral Atlas,
 Hedley 2005, Lyzenga 1981, Mann-Kendall, Theil-Sen, Reynolds 2007, Olofsson 2014, Pontius & Millones 2011, …).
 
-## License
+## License & trademark
 
-MIT — see `LICENSE`. (Switch to CC-BY-4.0 or another license if you prefer stronger attribution terms.)
+The **source code** is released under the MIT License — see `LICENSE`.
+
+**GISFORUS™** and the GISFORUS logo are trademarks of Anant Kumar Pathak. The MIT license covers
+the code only; it does **not** grant any right to use the GISFORUS name or logo. You are welcome to
+use, modify, and redistribute the code under MIT, but please do so under your own name/branding, not
+under "GISFORUS". Full terms are in [`TRADEMARK.md`](TRADEMARK.md).
+
+## About GISFORUS
+
+**GISFORUS** is a geospatial software brand by Anant Kumar Pathak, building reproducible remote-sensing
+and Earth-observation tools for research and decision-making. The Spatial Research Suite is its flagship
+open research pipeline.
 
 ## Contact
 
-Anant K. Pathak · anant4infinity@gmail.com
+Anant Kumar Pathak · anant4infinity@gmail.com · GISFORUS

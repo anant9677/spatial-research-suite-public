@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it using the metadata from this file."
-title: "Spatial Research Suite — Geospatial & Remote-Sensing Analysis Pipeline"
+title: "GISFORUS Spatial Research Suite — Geospatial & Remote-Sensing Analysis Pipeline"
 abstract: >-
   An open R / Shiny + Google Earth Engine pipeline for reproducible, publishable
   remote-sensing research: land-cover and change analysis, spectral-index libraries,
@@ -12,6 +12,7 @@ authors:
   - family-names: "Pathak"
     given-names: "Anant Kumar"
     email: "anant4infinity@gmail.com"
+    affiliation: "GISFORUS"
 version: "1.0.0"
 doi: "10.5281/zenodo.22075124"
 date-released: "2026-08-24"
