@@ -151,7 +151,7 @@ and software versions used, so a reviewer can re-run the identical analysis.
 If you use this software, please cite it (see `CITATION.cff`, which GitHub renders as a
 "Cite this repository" button):
 
-> Pathak, A. K. (2026). *GISFORUS Spatial Research Suite — Geospatial & Remote-Sensing Analysis Pipeline* (Version 1.0.0) [Computer software].
+> Pathak, A. K. (2026). *GISFORUS Spatial Research Suite — Geospatial & Remote-Sensing Analysis Pipeline* (Version 1.1.0) [Computer software].
 > GISFORUS. Zenodo. https://doi.org/10.5281/zenodo.22075124
 
 **DOI:** [10.5281/zenodo.22075124](https://doi.org/10.5281/zenodo.22075124) — this is the *concept DOI* and always resolves to the latest release. Zenodo also mints a version-specific DOI for each release.
