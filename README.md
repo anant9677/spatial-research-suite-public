@@ -1,6 +1,6 @@
 # GISFORUS Spatial Research Suite — Geospatial & Remote-Sensing Analysis Pipeline
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22075124.svg)](https://doi.org/10.5281/zenodo.22075124)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22075123.svg)](https://doi.org/10.5281/zenodo.22075123)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 A **GISFORUS™** project. An open, general-purpose **R / Shiny + Google Earth Engine** pipeline for
@@ -152,9 +152,9 @@ If you use this software, please cite it (see `CITATION.cff`, which GitHub rende
 "Cite this repository" button):
 
 > Pathak, A. K. (2026). *GISFORUS Spatial Research Suite — Geospatial & Remote-Sensing Analysis Pipeline* (Version 1.1.0) [Computer software].
-> GISFORUS. Zenodo. https://doi.org/10.5281/zenodo.22075124
+> GISFORUS. Zenodo. https://doi.org/10.5281/zenodo.22075123
 
-**DOI:** [10.5281/zenodo.22075124](https://doi.org/10.5281/zenodo.22075124) — this is the *concept DOI* and always resolves to the latest release. Zenodo also mints a version-specific DOI for each release.
+**DOI:** [10.5281/zenodo.22075123](https://doi.org/10.5281/zenodo.22075123) — this is the *concept DOI* and always resolves to the latest release. Zenodo also mints a version-specific DOI for each release.
 
 Please also cite the underlying datasets and methods listed in each report's
 **Data sources & references** section (Sentinel-2/Landsat, NOAA OISST, Allen Coral Atlas,
