@@ -13,10 +13,15 @@ authors:
     given-names: "Anant Kumar"
     email: "anant4infinity@gmail.com"
 version: "1.0.0"
+doi: "10.5281/zenodo.22075124"
 date-released: "2026-08-24"
 license: MIT
 repository-code: "https://github.com/anant9677/spatial-research-suite-public"
 url: "https://github.com/anant9677/spatial-research-suite-public"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.22075124"
+    description: "Concept DOI for all versions (Zenodo)"
 keywords:
   - remote sensing
   - Google Earth Engine
