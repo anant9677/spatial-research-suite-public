@@ -4,9 +4,13 @@ title: "GISFORUS Spatial Research Suite — Geospatial & Remote-Sensing Analysis
 abstract: >-
   An open R / Shiny + Google Earth Engine pipeline for reproducible, publishable
   remote-sensing research: land-cover and change analysis, spectral-index libraries,
-  trend and correlation statistics, and a marine/coral module. Includes a Maya Bay
-  (Ko Phi Phi Leh, Thailand) case study using the 2018–2022 tourism closure as a
-  natural experiment to separate tourism impact from climate impact on the reef.
+  trend and correlation statistics, and a marine/coral module (blue-green bottom index,
+  coral-vs-algae variability screen, Degree Heating Weeks, turbidity, Allen Coral Atlas
+  masking). It produced the analysis in the companion paper, which uses the 2018-2022
+  Maya Bay (Ko Phi Phi Leh, Thailand) tourism closure in a three-tier nested
+  before-after/control-impact (BACI) design to show that the reef's apparent post-closure
+  "greening" is a region-wide, likely macroalgal signal rather than a closure effect,
+  and that a blue-green optical index cannot on its own separate coral from algae.
 type: software
 authors:
   - family-names: "Pathak"
@@ -27,7 +31,24 @@ keywords:
   - remote sensing
   - Google Earth Engine
   - coral reef
+  - nested BACI
+  - difference-in-differences
+  - optical ambiguity
+  - macroalgae
+  - policy misattribution
+  - coupled monitoring
   - land cover
   - R Shiny
   - reproducible research
   - Maya Bay
+references:
+  - type: article
+    title: >-
+      The optical ambiguity of coral and algae: replacing standalone impact
+      evaluations with a nested BACI design to prevent policy misattribution in
+      coastal tourism
+    authors:
+      - family-names: "Pathak"
+        given-names: "Anant Kumar"
+    year: 2026
+    notes: "Companion paper (SSRN preprint) — add SSRN URL/DOI once posted."

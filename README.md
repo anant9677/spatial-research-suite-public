@@ -3,13 +3,21 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22075123.svg)](https://doi.org/10.5281/zenodo.22075123)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-A **GISFORUS™** project. An open, general-purpose **R / Shiny + Google Earth Engine** pipeline for
-reproducible, publishable remote-sensing research — land-cover & change analysis, spectral-index
-libraries, trend/correlation statistics, and a marine/coral module. Designed as an extensible
-suite, not a single-study tool.
+A **GISFORUS™** project by Anant Kumar Pathak. An open, general-purpose **R / Shiny + Google Earth Engine**
+pipeline for reproducible, publishable remote-sensing research — land-cover & change analysis, spectral-index
+libraries, trend/correlation statistics, and a marine/coral module. Designed as an extensible suite, not a
+single-study tool.
 
-> **Case study:** Maya Bay (Ko Phi Phi Leh, Thailand) — using the 2018–2022 tourism
-> closure as a natural experiment to separate tourism impact from climate impact on the reef.
+> **Companion paper.** This suite produced the analysis in:
+> Pathak, A. K. (2026). *The optical ambiguity of coral and algae: replacing standalone impact evaluations with
+> a nested BACI design to prevent policy misattribution in coastal tourism.* SSRN preprint.
+> `‹add SSRN link/DOI once posted›`
+>
+> The study uses the 2018–2022 tourism closure of **Maya Bay (Ko Phi Phi Leh, Thailand)** as a natural
+> experiment in a **three-tier nested before–after/control–impact (BACI)** design — Maya Bay (impact),
+> Ko Phi Phi Don (internal control) and Ko Tarutao (external climate control) — to show that the reef's
+> apparent post-closure "greening" is a region-wide, likely macroalgal signal rather than a closure effect,
+> and that a blue–green optical index cannot on its own separate coral from algae.
 
 ---
 
@@ -42,9 +50,11 @@ user-drawn boundary and date range, computed on Google Earth Engine via `rgee`:
   table, a **reproducibility/provenance** table (CRS, software versions, parameters, bounding
   box), auto-written methods with DOIs, and honest limitations.
 
-A companion **research framework** (`docs/methodology-framework.md`) turns these indicators into a
-**compound reef–tourism management index** (Reef Condition × Tourism Pressure → traffic-light
-decision classes with precautionary triggers), using a DPSIR + BACI / interrupted-time-series design.
+The suite can also combine its indicators into higher-level **management frameworks** (e.g. a
+condition-versus-pressure decision space using a DPSIR + BACI / interrupted-time-series design;
+see `docs/methodology-framework.md`). The companion paper deliberately keeps its focus narrower — a
+nested-BACI test that separates tourism impact from climate impact — and treats such compound indices
+as a framework for future work rather than a validated deliverable.
 
 ---
 
@@ -62,7 +72,7 @@ decision classes with precautionary triggers), using a DPSIR + BACI / interrupte
 | `gee_indices.R` | Spectral-index library (local rgee compute) |
 | `mod_lulc.R` | LULC classification, accuracy, change & landscape metrics |
 | `mod_carto.R` | Publication-quality map rendering |
-| `mod_extractor.R` | Boundary / shapefile handling |
+| `mod_extractor.R` | Boundary / shapefile handling, incl. bounding-box ROI entry (exact-coordinate cropping) |
 | `mod_insights.R`, `export_engine.R`, `processing_router.R`, `multivariate_engine.R` | Insights, exports, routing, multivariate helpers |
 | `global.R` | GEE session init + all shared/pure analysis functions |
 | `app.R` | Entry point — builds the UI, wires the modules, runs the Export Manager |
@@ -90,9 +100,7 @@ shiny::runApp()          # or open app.R in RStudio and click "Run App"
 
 Shiny auto-loads every module in `R/`; `global.R` initialises the Earth Engine session.
 This is an **open build** — no accounts, no login, no payments: every module and every
-export is available immediately from a boundary + date range. (The internal build's separate
-*Statistical Analysis* tab is not part of this release; trend, correlation and confidence-interval
-statistics are still produced inside the GEE pipeline and its reports.)
+export is available immediately from a boundary + date range.
 
 No API keys, service-account keys, or credentials of any kind are committed to this repository.
 
@@ -104,42 +112,48 @@ Every run records the exact parameters to reproduce it, and the report states it
 these are **satellite screening tools, not field-validated**. In particular the blue-green bottom
 index cannot separate **live coral from macroalgae** — read it as "dark benthic cover", confirm
 with in-situ / hyperspectral data, and see the interpretation notes attached to every correlation.
+This optical ambiguity is the central methodological point of the companion paper.
 
 ---
 
-## Reproducing the Maya Bay case study
+## Reproducing the nested-BACI case study
 
-The paper's natural experiment uses the 2018–2022 tourism closure of **Maya Bay
-(Ko Phi Phi Leh, Thailand)** to separate tourism pressure from climate pressure on the reef.
-To reproduce it end-to-end:
+The paper's natural experiment uses the 2018–2022 tourism closure of **Maya Bay** in a **three-tier
+nested design**: an impact site, an internal control that shares Maya Bay's climate and tourism market,
+and a low-tourism external control that anchors the region-wide climate signal. To reproduce it
+end-to-end, run the same pipeline over each of the three ROIs and the three time windows, then compare.
 
-**1. Study area.** In the *Shapefile Extractor* (or by drawing a ROI on the map), use the bay and
-its fringing reef. Approximate bounding box (WGS84 / EPSG:4326 — adjust to your exact ROI):
+**1. Study-area ROIs** (WGS84 / EPSG:4326 — enter directly in the *Shapefile Extractor* bounding-box fields,
+or draw on the map):
 
-| | Longitude (E) | Latitude (N) |
-|---|---|---|
-| min | 98.758 | 7.672 |
-| max | 98.772 | 7.686 |
+| Tier | Role | Longitude (E) | Latitude (N) |
+|---|---|---|---|
+| **T1 Maya Bay** | impact — closed 2018–2022 | 98.761 – 98.769 | 7.673 – 7.681 |
+| **T2 Ko Phi Phi Don** | internal control — open throughout | 98.752 – 98.800 | 7.708 – 7.798 |
+| **T3 Ko Tarutao** | external control — low tourism | 99.585 – 99.714 | 6.493 – 6.742 |
 
-**2. Three time windows** (drive the same pipeline for each, then compare):
+**2. Three time windows** (drive the same pipeline for each tier, then compare):
 
 | Phase | Date range | Sensor to use |
 |---|---|---|
-| Pre-closure baseline | `2016-01-01 → 2018-05-31` | Landsat long-record coral (Sentinel-2 is sparse pre-2019) |
-| Closure | `2018-06-01 → 2021-12-31` | Sentinel-2 (2019+) + Landsat |
-| Post-reopening | `2022-01-01 → 2025-12-31` | Sentinel-2 |
+| Pre-closure baseline (PRE) | `2015-01-01 → 2018-05-31` | Landsat long-record coral (Sentinel-2 is sparse pre-2019) |
+| Closure (DURING) | `2018-06-01 → 2021-12-31` | Sentinel-2 (2019+) + Landsat |
+| Post-reopening (POST) | `2022-01-01 → 2025-12-31` | Sentinel-2 |
 
 **3. Pipeline order** (GEE Cloud Analytics → sequential pipeline): Land Mask → Allen Coral Atlas
 coral mask → **Coral Health** (blue-green bottom index) → **Coral-vs-Algae** variability screen →
-**Marine Heat Stress** (SST anomaly + Degree Heating Weeks) → **Turbidity** (Nechad) → **Trend**
-(OLS + 95% CI, Mann-Kendall/Theil-Sen) → **Cross-indicator correlation**. Each step hands its
-region/mask to the next; export the HTML report at the end.
+**Marine Heat Stress** (SST anomaly + Degree Heating Weeks) → **Turbidity** (Nechad). Each step hands its
+region/mask to the next; export the HTML report at the end. Use the report's absolute period-mean bottom
+index (class-midpoint × class-share) so values are comparable across the per-run percentile stretches.
 
-**4. Reading the result — the key caveat.** The bottom index *rises* after reopening (peaking in the
-2024 heatwave year). This is **not** proof of coral recovery: the blue-green index cannot tell live
-coral from macroalgae, and the **Coral-vs-Algae** variability map flags that benthic cover as
-fluctuating (algae-likely), not stable (coral-likely). Read the rise as "more dark benthic cover,"
-consistent with macroalgae — and confirm with in-situ / hyperspectral data before any ecological claim.
+**4. Reading the result — the nested comparison.** The bottom index *rises* from PRE to POST at **all three
+tiers** — Maya Bay +0.183, Ko Phi Phi Don +0.149, and, decisively, the low-tourism external control
+Ko Tarutao **+0.251 (the most)**. The rise therefore does not track tourism status: the local
+difference-in-differences (Maya − open Phi Phi) is only +0.034, and a reef that was never closed and
+carries little tourism rose furthest. Peak Degree Heating Weeks escalated to 11.6 °C-weeks (severe-bleaching
+range) and the Coral-vs-Algae screen grew more algae-like at every site. The apparent "recovery" is thus a
+region-wide, likely macroalgal darkening — **not** a Maya Bay closure effect — and the blue-green index
+cannot by itself confirm coral. Confirm with in-situ / hyperspectral data before any ecological claim.
 
 The provenance table in every report records the exact CRS, date range, bounding box, parameters,
 and software versions used, so a reviewer can re-run the identical analysis.
@@ -148,13 +162,20 @@ and software versions used, so a reviewer can re-run the identical analysis.
 
 ## How to cite
 
-If you use this software, please cite it (see `CITATION.cff`, which GitHub renders as a
+If you use this **software**, please cite it (see `CITATION.cff`, which GitHub renders as a
 "Cite this repository" button):
 
-> Pathak, A. K. (2026). *GISFORUS Spatial Research Suite — Geospatial & Remote-Sensing Analysis Pipeline* (Version 1.1.0) [Computer software].
-> GISFORUS. Zenodo. https://doi.org/10.5281/zenodo.22075123
+> Pathak, A. K. (2026). *GISFORUS Spatial Research Suite — Geospatial & Remote-Sensing Analysis Pipeline*
+> (Version 1.1.0) [Computer software]. GISFORUS. Zenodo. https://doi.org/10.5281/zenodo.22075123
 
-**DOI:** [10.5281/zenodo.22075123](https://doi.org/10.5281/zenodo.22075123) — this is the *concept DOI* and always resolves to the latest release. Zenodo also mints a version-specific DOI for each release.
+If you refer to the **study / findings**, please also cite the paper:
+
+> Pathak, A. K. (2026). *The optical ambiguity of coral and algae: replacing standalone impact evaluations
+> with a nested BACI design to prevent policy misattribution in coastal tourism.* SSRN preprint.
+> `‹add SSRN link/DOI once posted›`
+
+**Software DOI:** [10.5281/zenodo.22075123](https://doi.org/10.5281/zenodo.22075123) — this is the *concept DOI*
+and always resolves to the latest release. Zenodo also mints a version-specific DOI for each release.
 
 Please also cite the underlying datasets and methods listed in each report's
 **Data sources & references** section (Sentinel-2/Landsat, NOAA OISST, Allen Coral Atlas,
