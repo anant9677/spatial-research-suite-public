@@ -1,52 +1,31 @@
-# Trademark & Brand Notice
+# GISFORUS — Project Name & Branding Notice
 
-**GISFORUS™** and the GISFORUS logo (the "Marks") are trademarks of **Anant Kumar Pathak**.
-All rights in the Marks are reserved.
+**GISFORUS** is the project and brand name used by **Anant Kumar Pathak** for this work. It is *not* a
+registered trademark, and this notice makes no formal trademark or ownership claim — it simply records how
+the author asks the name to be used.
 
-This notice records ownership of the GISFORUS brand and the terms under which the Marks may — and
-may not — be used. It is published together with the source code as a matter of public record.
+- **Author / maintainer:** Anant Kumar Pathak · anant4infinity@gmail.com
+- **Project:** *GISFORUS Spatial Research Suite* — an open R / Shiny + Google Earth Engine remote-sensing
+  analysis pipeline (this repository).
 
-## Ownership
+## Code licence vs. project name
 
-- **Owner:** Anant Kumar Pathak
-- **Contact:** anant4infinity@gmail.com
-- **Marks:** the word mark **GISFORUS**, the stylized wordmark, and the GISFORUS logo
-- **First public use of this notice:** 2026 (see this repository's Git history for the exact commit date)
-- **Flagship product:** *GISFORUS Spatial Research Suite* — an open R / Shiny + Google Earth Engine
-  remote-sensing analysis pipeline (this repository)
+The **source code** in this repository is released under the **MIT License** (see `LICENSE`). The MIT
+licence grants rights to the *code*; it does not, by itself, say anything about the project *name*. The
+following is a courtesy request, not a legal restriction:
 
-## Code license vs. trademark — they are separate
+- You may use, copy, modify, and redistribute the **code** under the MIT License.
+- Please **do not** present your own fork, product, service, or organisation *as* "GISFORUS," or in any way
+  that implies endorsement or affiliation. If you build on this code, please release it under **your own
+  name and branding**.
+- Truthful, factual reference is of course fine — e.g. "built with the GISFORUS Spatial Research Suite," or
+  citing the software using `CITATION.cff`.
 
-The **source code** in this repository is released under the **MIT License** (see `LICENSE`).
-An open-source code license grants rights to the *code*; it does **not** grant any right to use the
-project's or owner's **name, brand, or logo**. The two are deliberately kept separate:
+## Questions
 
-- ✅ You may use, copy, modify, and redistribute the **code** under the terms of the MIT License.
-- ❌ The MIT License does **not** give you permission to use the **GISFORUS** name or logo.
-
-## Permitted uses (no permission needed)
-
-- Nominative / factual reference — e.g. "built with the GISFORUS Spatial Research Suite" or
-  "based on code from the GISFORUS Spatial Research Suite," where such a statement is truthful and
-  does not imply endorsement, sponsorship, or affiliation.
-- Citing the software academically using the details in `CITATION.cff`.
-
-## Uses that require prior written permission
-
-- Using "GISFORUS" (or a confusingly similar name/logo) as the name or branding of your own
-  product, service, application, fork, website, or organization.
-- Any use that suggests endorsement, sponsorship, affiliation, or official status.
-- Use of the GISFORUS logo in any modified form, or in a way that could cause confusion as to origin.
-
-If you redistribute or build upon this code, please do so **under your own name and branding**, not
-under "GISFORUS."
-
-## Requesting permission
-
-To request permission to use the Marks, contact **anant4infinity@gmail.com**.
+To ask about using the name, contact **anant4infinity@gmail.com**.
 
 ---
 
-© 2026 Anant Kumar Pathak. GISFORUS™ is a trademark of Anant Kumar Pathak. This notice does not
-constitute legal advice; formal statutory protection may require trademark registration in the
-relevant jurisdictions.
+© 2026 Anant Kumar Pathak. Code released under the MIT License. "GISFORUS" is used here as a project / brand
+name, not as a registered trademark.

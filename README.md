@@ -3,7 +3,7 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22075123.svg)](https://doi.org/10.5281/zenodo.22075123)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-A **GISFORUS™** project by Anant Kumar Pathak. An open, general-purpose **R / Shiny + Google Earth Engine**
+A **GISFORUS** project by Anant Kumar Pathak. An open, general-purpose **R / Shiny + Google Earth Engine**
 pipeline for reproducible, publishable remote-sensing research — land-cover & change analysis, spectral-index
 libraries, trend/correlation statistics, and a marine/coral module. Designed as an extensible suite, not a
 single-study tool.
@@ -181,14 +181,15 @@ Please also cite the underlying datasets and methods listed in each report's
 **Data sources & references** section (Sentinel-2/Landsat, NOAA OISST, Allen Coral Atlas,
 Hedley 2005, Lyzenga 1981, Mann-Kendall, Theil-Sen, Reynolds 2007, Olofsson 2014, Pontius & Millones 2011, …).
 
-## License & trademark
+## License & project name
 
 The **source code** is released under the MIT License — see `LICENSE`.
 
-**GISFORUS™** and the GISFORUS logo are trademarks of Anant Kumar Pathak. The MIT license covers
-the code only; it does **not** grant any right to use the GISFORUS name or logo. You are welcome to
-use, modify, and redistribute the code under MIT, but please do so under your own name/branding, not
-under "GISFORUS". Full terms are in [`TRADEMARK.md`](TRADEMARK.md).
+**GISFORUS** is the author's project / brand name — it is *not* a registered trademark, and this
+repository makes no formal trademark claim. The MIT License covers the code; it says nothing about the
+name. You are welcome to use, modify, and redistribute the code under MIT — please just do so under
+**your own name and branding** rather than presenting it as "GISFORUS." See [`TRADEMARK.md`](TRADEMARK.md)
+for the (non-legal) branding note.
 
 ## About GISFORUS
 
