@@ -51,4 +51,7 @@ references:
       - family-names: "Pathak"
         given-names: "Anant Kumar"
     year: 2026
-    notes: "Companion paper (SSRN preprint) — add SSRN URL/DOI once posted."
+    notes: "Companion paper (SSRN preprint)."
+    doi: "10.2139/ssrn.7451046"
+    url: "https://ssrn.com/abstract=7451046"
+    month: 9

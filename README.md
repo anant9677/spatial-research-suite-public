@@ -11,7 +11,7 @@ single-study tool.
 > **Companion paper.** This suite produced the analysis in:
 > Pathak, A. K. (2026). *The optical ambiguity of coral and algae: replacing standalone impact evaluations with
 > a nested BACI design to prevent policy misattribution in coastal tourism.* SSRN preprint.
-> `‹add SSRN link/DOI once posted›`
+> Available at SSRN: https://ssrn.com/abstract=7451046 · DOI: https://doi.org/10.2139/ssrn.7451046
 >
 > The study uses the 2018–2022 tourism closure of **Maya Bay (Ko Phi Phi Leh, Thailand)** as a natural
 > experiment in a **three-tier nested before–after/control–impact (BACI)** design — Maya Bay (impact),
@@ -172,7 +172,7 @@ If you refer to the **study / findings**, please also cite the paper:
 
 > Pathak, A. K. (2026). *The optical ambiguity of coral and algae: replacing standalone impact evaluations
 > with a nested BACI design to prevent policy misattribution in coastal tourism.* SSRN preprint.
-> `‹add SSRN link/DOI once posted›`
+> Available at SSRN: https://ssrn.com/abstract=7451046 · DOI: https://doi.org/10.2139/ssrn.7451046
 
 **Software DOI:** [10.5281/zenodo.22075123](https://doi.org/10.5281/zenodo.22075123) — this is the *concept DOI*
 and always resolves to the latest release. Zenodo also mints a version-specific DOI for each release.
