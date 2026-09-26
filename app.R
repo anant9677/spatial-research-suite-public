@@ -1334,7 +1334,7 @@ server <- function(input, output, session) {
           p(HTML("The <b>GISFORUS Spatial Research Suite</b> is an open R / Shiny + Google Earth Engine pipeline for reproducible, publishable remote-sensing research \u2014 land-cover &amp; change analysis, spectral-index libraries, trend/correlation statistics, and a marine/coral module.")),
           p("Features include: administrative boundary extraction, Random Forest / CART / SVM land-cover classification with per-pixel confidence mapping, statistically-validated multi-year trend detection (Mann-Kendall), batch zonal statistics, correlation analysis, and publication-ready cartography."),
           p(tags$b("A GISFORUS\u2122 project by:"), " Anant Kumar Pathak"),
-          p(tags$b("Contact:"), " ", tags$a(href = "mailto:anant4infinity@gmail.com", "anant4infinity@gmail.com"))
+          p(tags$b("Contact:"), " ", tags$a(href = "mailto:support@gisforus.com", "support@gisforus.com"))
       )
     ))
   })

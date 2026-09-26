@@ -81,7 +81,7 @@ plan(multisession, workers = 2)
 # earlier in-process future/reticulate attempt hit unrecoverable cross-process Python object
 # errors; an HTTP call has no such problem, since no Python object ever crosses a process boundary.
 # Configurable via env var so the same code works against a local test server or the deployed one.
-GEE_COMPUTE_API_URL <- Sys.getenv("GEE_COMPUTE_API_URL", "https://gee-compute-service-173824452148.us-central1.run.app")
+GEE_COMPUTE_API_URL <- Sys.getenv("GEE_COMPUTE_API_URL", "")
 
 # 🚀 SECURITY FIX: gee-compute-service no longer allows unauthenticated access — anyone who
 # guessed its URL could otherwise call it directly, bypassing this app's rate limits entirely
@@ -221,7 +221,7 @@ initialize_gee_session <- function(quiet = TRUE) {
         google_auth <- reticulate::import("google.oauth2.service_account")
         gee_scopes <- c("https://www.googleapis.com/auth/earthengine", "https://www.googleapis.com/auth/cloud-platform")
         creds <- google_auth$Credentials$from_service_account_file(key_path)$with_scopes(gee_scopes)
-        ee$Initialize(credentials = creds, project = "ee-anant4infinityy")
+        ee$Initialize(credentials = creds, project = Sys.getenv("GISFORUS_EE_PROJECT", ""))
         message("✅ GEE Authenticated via Service Account JSON")
         TRUE
       }, error = function(e) {
@@ -239,7 +239,7 @@ initialize_gee_session <- function(quiet = TRUE) {
         # it in the embedded Python so EE uses ~/.config/gcloud ADC instead.
         Sys.unsetenv("GOOGLE_APPLICATION_CREDENTIALS")
         try(reticulate::py_run_string("import os; os.environ.pop('GOOGLE_APPLICATION_CREDENTIALS', None)"), silent = TRUE)
-        ee$Initialize(project = "ee-anant4infinityy")
+        ee$Initialize(project = Sys.getenv("GISFORUS_EE_PROJECT", ""))
         message("✅ GEE Authenticated via Local ADC Token")
       }
     }
